@@ -1,0 +1,41 @@
+<div id="login-bar" th:fragment="lb">
+    <ul class="lb">
+        <li>
+            <a th:href="@{/login}">Вход</a>
+        </li>
+        <li>
+            <a th:href="@{/register}" class="reg">Регистрация</a>
+        </li>
+        <li>
+            <form th:replace="fragments/forms/facebook-connection-forms::fb_connection-form2"></form>
+        </li>
+    </ul>
+</div>
+
+
+<div id="login-bar" th:fragment="lb-profile">
+    <ul class="lb-profile">
+        <li>
+            <a class="lb-profile" th:href="@{/user/profile}">
+                <img th:src="@{/images/icon_user_profile.png}" alt="My profile">
+                Моят профил
+            </a>
+        </li>
+        <li>
+            <a class="lb-profile" th:href="|/user/${#authentication.getPrincipal().getId()}/orders|">
+                <img th:src="@{/images/icon_user_orders.png}" alt="My orders">
+                Моите поръчки
+            </a>
+        </li>
+        <ul class="hi">
+            <li>
+                <span th:text="|Здравей, ${#authentication.getPrincipal().getFirstName()}|"></span>
+            </li>
+            <li>
+                <a th:href="@{/logout}" title="Изход">
+                    <img th:src="@{/images/icon_logout.png}" alt="Изход" />
+                </a>
+            </li>
+        </ul>
+    </ul>
+</div>

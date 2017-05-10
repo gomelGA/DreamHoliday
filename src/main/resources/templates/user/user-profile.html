@@ -1,0 +1,50 @@
+<header th:replace="fragments/header::mm"></header>
+<div id="cw">
+    <div id="content">
+        <div id="content-right">
+            <div class="body">
+                <div class="bodyWrap">
+                    <h1>Моят профил</h1>
+                    <form action=""></form>
+                    <table class="profile">
+                        <tr>
+                            <td class="label">Име</td>
+                            <td class="data"
+                                th:text="${#strings.concat(#authentication.getPrincipal().getFirstName(), '&nbsp;', #authentication.getPrincipal().getLastName())}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Пол</td>
+                            <td class="data"
+                                th:if="${#strings.equals(#authentication.getPrincipal().getGender(), 'MALE')}"
+                                th:text="${'мъж'}"></td>
+                            <td class="data"
+                                th:if="${#strings.equals(#authentication.getPrincipal().getGender(), 'FEMALE')}"
+                                th:text="${'жена'}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">E-mail</td>
+                            <td class="data" th:text="${#authentication.getPrincipal().getUsername()}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Телефон</td>
+                            <td class="data" th:text="${#authentication.getPrincipal().getPhone()}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Държава</td>
+                            <td class="data" th:text="${#authentication.getPrincipal().getCountry()}"></td>
+                        </tr>
+                    </table>
+                    <p>
+                        <a type="button" id="btnProfileEdit" class="btn-user btn-general"
+                           th:href="|/user/profileChange/userId=${#authentication.getPrincipal().getId()}|">
+                            Редактирай
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/parts/content-left::content-left"></div>
+    </div>
+</div>
+

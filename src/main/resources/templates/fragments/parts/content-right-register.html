@@ -1,0 +1,19 @@
+<main th:fragment="content-right-register">
+    <div id="cw">
+        <div id="content">
+            <div id="content-right">
+                <div class="body">
+                    <div class="bodyWrap">
+                        <h1>Регистрация в DreamHoliday.bg</h1>
+                        <p>
+                        <form th:replace="fragments/forms/facebook-connection-forms::fb_connection-form"></form>
+                        </p>
+                        <h2>Данни за вход</h2>
+                        <form th:replace="fragments/forms/registration-form::registration-form"></form>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/parts/content-left::content-left"></div>
+        </div>
+    </div>
+</main>

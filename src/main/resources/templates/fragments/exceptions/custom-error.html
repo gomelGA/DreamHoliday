@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head"></head>
+    <body>
+        <header th:replace="fragments/header::mm"></header>
+        </header>
+        <main>
+            <h1 class="h1">Something Went Wrong!</h1>
+            <a class="btn btn-primary" href="/">Go Home</a>
+        </main>
+        <script th:src="@{/jquery/jquery.min.js}"></script>
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>

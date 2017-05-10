@@ -1,0 +1,57 @@
+ <header th:replace="fragments/header::mm"></header>
+    <div id="cw">
+        <div id="content">
+            <div id="content-right">
+                <div class="body">
+                    <div class="bodyWrap">
+                        <h1>Моите поръчки</h1>
+                        <p>Това е историята на всички ваши поръчки:</p>
+                        <div class="user-separator">
+                            <table id="ohTros" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th id="tableData" style="width: 20px">№</th>
+                                        <th id="tableData" style="width: 122px">Създадена на</th>
+                                        <th id="tableData" style="width: 240px">Заглавие</th>
+                                        <th id="tableData" style="width: 130px">Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersInfo" th:each="order : ${orders}">
+                                    <tr>
+                                        <td id="orderData">
+                                            <a th:href="|/orders/details/orderId=${order.id}|" th:text="${order.id}"></a>
+                                        </td>
+                                        <td id="orderData" th:text="${#dates.format(order.creationDate, 'dd.MM.yyyy')}">
+                                        </td>
+                                        <td>
+                                            <p th:text="${order.offerTitle}"></p>
+                                            <p th:text="|Ваучери: ${order.voucherCount} бр. x ${#numbers.formatDecimal(order.singleVoucherPrice, 1, 2)} лв.|"></p>
+                                            <p th:text="|Обща цена: ${#numbers.formatDecimal(order.totalPrice, 1, 2)} лв.|"></p>
+                                            <!--<hr>-->
+                                        </td>
+                                        <td>
+                                            <p th:if="${#bools.isTrue(order.paid)}">
+                                        <span>
+                                            Поръчка: потвърдена <br>
+                                            Плащане: платена
+                                            <p th:if="${order.paymentMethod.equals('BANK')}" th:text="|Начин: банков превод|"></p>
+                                            <p th:if="${order.paymentMethod.equals('CARD')}" th:text="|Начин: с карта|"></p>
+                                        </span>
+                                            <p th:if="${#bools.isFalse(order.paid)}">
+                                                Поръчка: обработва се
+                                                <span>
+                                                    Плащане: в очакване <br>
+                                                    Начин: в брой
+                                                </span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/parts/content-left::content-left"></div>
+        </div>
+    </div>

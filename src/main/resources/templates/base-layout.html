@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="fragments/head"></head>
+    <body>
+        <div class="container">
+            <div th:replace="${view}"></div>
+        </div>
+        <script th:replace="fragments/footer"></script>
+        <script type="text/javascript">
+            var recommendedOffers = $(".troBanner");
+            for (var i = 0; i < recommendedOffers.length; i++) {
+                var target1 = Math.floor(Math.random() * recommendedOffers.length - 1) + 1;
+                var target2 = Math.floor(Math.random() * recommendedOffers.length - 1) + 1;
+                recommendedOffers.eq(target1).before(recommendedOffers.eq(target2));
+            }
+
+            $(function () {
+                $('#trosfq').on('input', search);
+            });
+
+            function search() {
+                var searchWord = $('#trosfq').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/offers/search',
+                    data: {
+                        searchWord: searchWord
+                    },
+                    contentType: 'application/json',
+                    success: function (offers) {
+                        $('#toDoItemsList').empty();
+                        $.each(items, function (i, toDoItem) {
+                            addToDoItemDOM(toDoItem);
+                        });
+                    }
+                });
+            }
+
+            var vouchers_count = new Array();
+            vouchers_count["1"] = 1;
+            vouchers_count["2"] = 2;
+            vouchers_count["3"] = 3;
+            vouchers_count["4"] = 4;
+            vouchers_count["5"] = 5;
+            vouchers_count["6"] = 6;
+            vouchers_count["7"] = 7;
+            vouchers_count["8"] = 8;
+            vouchers_count["9"] = 9;
+            vouchers_count["10"] = 10;
+
+            function getSelectedVouchersCount() {
+                var selectedVouchersCount;
+                var theForm = document.forms["frmOrderIndex"];
+                var selectedCount = theForm.elements["offers_qty"];
+                selectedVouchersCount = vouchers_count[selectedCount.value];
+                document.getElementById('offers_qty2').innerHTML = selectedVouchersCount;
+                return selectedVouchersCount;
+            }
+
+            function getOfferPrice() {
+                var offerPrice = document.getElementsByTagName("td")[1].getAttribute("value");
+
+                return offerPrice;
+            }
+
+            function getTotalPrice() {
+                var totalPrice = (getOfferPrice() * getSelectedVouchersCount()).toFixed(2);
+                document.getElementById('troTotalPrice').innerHTML = totalPrice;
+                document.getElementById('troOfferFinalPrice2').innerHTML = totalPrice;
+                document.getElementById('troTotalPrice2').innerHTML = totalPrice;
+            }
+        </script>
+    </body>
+</html>

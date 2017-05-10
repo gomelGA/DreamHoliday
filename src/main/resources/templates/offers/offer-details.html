@@ -1,0 +1,126 @@
+<header th:replace="fragments/header::mm"></header>
+<div id="cw">
+    <div id="content">
+        <div id="content-right">
+            <div class="body">
+                <div class="tro_offers" id="offContainer">
+                    <div class="offerRow" th:object="${offerViewModel}">
+                        <h5 th:text="${offerViewModel.title}"></h5>
+                        <div class="offerRowLeft">
+                            <div th:replace="fragments/parts/carousel::carousel">
+                            </div>
+                        </div>
+                        <div class="off_widget">
+                            <div class="priceW ">
+                                <span class="finalPrice" th:text="|${#numbers.formatDecimal(offerViewModel.finalPrice, 1, 2)} лв.|"></span>
+                            </div>
+                            <div class="actButton" sec:authorize="isAuthenticated()">
+                                <a th:href="|/orders/details/offerId=${offerViewModel.id}&userId=${#authentication.getPrincipal().getId()}|" title="Купи сега">
+                                    <img th:src="@{/images/btn_buy.png}" alt="Купи сега"/>
+                                </a>
+                            </div>
+                            <div sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/login}" title="Купи сега">
+                                    <img th:src="@{/images/btn_buy.png}" alt="Купи сега"/>
+                                </a>
+                            </div>
+                            <div class="priceW2">
+                                <table class="priceInfo">
+                                    <div th:if="${offerViewModel.discount != 0.00}">
+                                        <tr>
+                                            <th>Стойност:</th>
+                                            <td>
+                                            <span class="disabled"
+                                                  th:text="|${#numbers.formatDecimal(offerViewModel.regularPrice, 1, 2)}&nbsp;лв.|">
+                                            </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Отстъпка:</th>
+                                            <td>
+                                                <span class="percent" th:text="|${offerViewModel.discount}%|"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Спестяваш:&nbsp;</th>
+                                            <td th:with="subtractValue = ${offerViewModel.regularPrice - offerViewModel.finalPrice}">
+                                                <span th:text="|${#numbers.formatDecimal(subtractValue, 1, 2)}&nbsp;лв.|"></span>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                    <div id="zero-discount" th:unless="${offerViewModel.discount != 0.00}">
+                                        ТОП ЦЕНА !!!
+                                    </div>
+                                </table>
+                            </div>
+                            <!--TODO-->
+                            <div class="timer" id="cntOffer6090"></div>
+                            <!--//TODO-->
+                            <div class="totalDeals">Закупени: <strong
+                                    th:text="${offerViewModel.boughtVouchersCount}"></strong> бр.
+                            </div>
+                        </div>
+                        <div class="cb"></div>
+                    </div>
+                </div>
+                <div class="offerDetail">
+                    <div class="offerRowLeft">
+                        <h2>Описание</h2>
+                        <p th:text="${offerViewModel.description}"></p>
+                        <h2>Условия по офертата</h2>
+                        <b>
+                            <p th:text="${offerViewModel.offerConditions}"></p>
+                        </b>
+                        <ul>
+                            <li>За да бъде потвърдена резервацията ви е необходимо да изпратите имената на
+                                пътуващите на латиница<br/> на
+                                <a href="mailto:support@dreamholiday.bg">support@dreamholiday.bg.</a>
+                            </li>
+                            <li>Резервации се правят само, ако сте заявили и заплатили ваучерите си.</li>
+                        </ul>
+                        <h2>Валидност на офертата</h2>
+                        <strong>Oфертата е валидна за престой в следния период:
+                            <span th:text="${#dates.format(offerViewModel.startDate,'dd.MM.yyyy')}"></span>
+                            - <span th:text="${#dates.format(offerViewModel.endDate,'dd.MM.yyyy')}"></span>г.
+                            вкл.</strong>
+                        <ul>
+                            <li class="offer-validity-conditions">
+                                <em>*&nbsp;Офертата е валидна до изчерпване на капацитета.</em>
+                            </li>
+                            <li class="offer-validity-conditions">
+                                <em>*&nbsp;Задължително е да направите Вашата резервация до <span
+                                        th:text="${#dates.format(offerViewModel.endDate,'dd.MM.yyyy')}"></span>г.</em>
+                            </li>
+                        </ul>
+                        <h2>Цената включва</h2>
+                        <strong>
+                            <span th:text="${offerViewModel.priceIncludingInfo}"></span>
+                        </strong>
+                        <p>
+                        <h2>Цената не включва</h2>
+                        </p>
+                        <ul>
+                            <li><strong class="insurance">Транспорт</strong></li>
+                            <li>
+                                <strong class="insurance">Застраховка&nbsp;
+                                    <u>&quot;Помощ при пътуване&quot;</u>
+                                </strong>
+                            </li>
+                            <li><strong class="insurance">Застраховка&nbsp;
+                                <u>&quot;Отмяна на пътуване&quot;
+                                </u>
+                            </strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--TODO-->
+            <div id="loadingTroNote" style="display: none;">Зареждане на данни, моля
+                изчакайте...<br/><br/><img src="http://niamavreme.bg/public/client/images/ajax-loader.gif"/>
+            </div>
+        </div>
+        <div th:replace="fragments/parts/content-left::content-left"></div>
+    </div>
+</div>
+

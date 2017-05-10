@@ -1,0 +1,24 @@
+<div id="hw">
+    <div id="add-offer-header">
+        <div id="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo"/>
+            </a>
+        </div>
+        <div th:replace="fragments/parts/login-bars::lb-profile"></div>
+    </div>
+</div>
+<div id="cw">
+    <div id="content">
+        <div id="content-right">
+            <div class="body">
+                <div class="bodyWrap">
+                    <h1 class="add-offer-title">Добавяне на оферта</h1>
+                    <br/>
+                    <form th:replace="fragments/forms/add-offer-form::add-offer-form"></form>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/parts/content-left::content-left"></div>
+    </div>
+</div>

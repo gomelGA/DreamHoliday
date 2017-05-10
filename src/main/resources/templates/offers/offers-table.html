@@ -1,0 +1,36 @@
+<div id="hw">
+    <div id="add-offer-header">
+        <div id="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo"/>
+            </a>
+        </div>
+        <div th:replace="fragments/parts/login-bars::lb-profile"></div>
+    </div>
+</div>
+<div id="cw">
+    <div id="content">
+        <a th:href="@{/offers/add}" class="btn btn-warning m-1"><strong>+</strong> Добавяне на оферта</a>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="add-offer-thead-tr">
+                    <th>Ид.ном.</th>
+                    <th>Заглавие</th>
+                </tr>
+            </thead>
+            <tbody class="add-offer-tbody-tr">
+                <tr th:each="offer : ${offers}">
+                    <th scope="row" th:text="${offer.id}"></th>
+                    <td th:text="${offer.title}"></td>
+                    <!--<td>-->
+                        <!--<a th:href="@{/offers/edit/offerId={offer.id}}">Редактиране</a>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<a th:href="@{/offers/delete/offerId={offer.id}}">Изтриване</a>-->
+                    <!--</td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

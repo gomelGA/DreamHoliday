@@ -1,0 +1,124 @@
+<header th:replace="fragments/header::mm"></header>
+<div id="cw">
+    <div id="content">
+        <div id="content-right">
+            <div class="body">
+                <div class="bodyWrap">
+                    <h1 th:text="${offerViewModel.title}"></h1>
+                    <form id="frmOrderIndex" method="post" accept-charset="utf-8" th:object="${addOrderBindingModels}">
+                        <h2>Данни за поръчката</h2>
+                        <table class="order">
+                            <tr id="offerPrice">
+                                <td class="label" style="width: 300px;">Цена на офертата</td>
+                                <td class="data" th:value="${#numbers.formatDecimal(offerViewModel.finalPrice, 1, 2)}" th:text="|${#numbers.formatDecimal(offerViewModel.finalPrice, 1, 2)} лв.|"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="offers_qty">Брой ваучери</label>
+                                </td>
+                                <td class="data">
+                                    <select class="vouchersCount" name="offers_qty" id="offers_qty" th:field="*{voucherCount}" onchange="getTotalPrice()">
+                                        <option value="1" selected="selected">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">Обща цена по оферта</td>
+                                <td class="data">
+                                    <strong><span id="troTotalPrice"></span>&nbsp;лв.</strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <h2>Забележки към поръчката</h2>
+                        <p>
+                            <em>Mоля запишете имената си на латиница и дата на настаняване!</em>
+                        </p>
+                        <table class="order">
+                            <tr>
+                                <td class="label"><label for="customer_notes">Забележки<br/>(до 250 символа)</label>
+                                </td>
+                                <td class="data">
+                                    <textarea onkeypress="return max_length(event, this, 249);"
+                                                           name="customer_notes"
+                                                           id="customer_notes" class="long" th:field="*{notes}">
+                                    </textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <h2>Сума за плащане</h2>
+                        <table class="order">
+                            <tr>
+                                <td class="label" style="width: 300px;">Цена на офертата</td>
+                                <td class="data" th:text="|${#numbers.formatDecimal(offerViewModel.finalPrice, 1, 2)} лв.|"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Брой ваучери</td>
+                                <td class="data">
+                                    <strong><span id="offers_qty2" th:field="*{voucherCount}"></span></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">Обща цена по оферта</td>
+                                <td class="data"><strong><span id="troOfferFinalPrice2"></span>&nbsp;лв.</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Крайна цена на поръчката</td>
+                                <td class="data"><strong><span id="troTotalPrice2"></span>&nbsp;лв.</strong></td>
+                            </tr>
+                        </table>
+                        <h2>Избор на начин за плащане</h2>
+                        <table class="order" id="paymentInfo">
+                            <tr>
+                                <td class="label">
+                                    <label for="panelOrderPaymentMethod">Начин на плащане</label>
+                                    <span class="mandatory">*</span>
+                                </td>
+                                <td class="data" id="panelOrderPaymentMethod">
+                                    <p>
+                                        <label>
+                                            <input type="radio" name="payment_method" value="cash" th:field="*{paymentMethod}">
+                                            <span>В брой</span>
+                                        </label>
+                                        <img class="info" th:src="@{/images/information.gif}"
+                                             title="В брой на каса на агенцията.&nbsp;Срокът за плащане е до 2 дни.&nbsp;(Ако не заплатите в този срок, поръчката Ви ще бъде анулирана автоматично.)"/>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input type="radio" name="payment_method" value="bank" th:field="*{paymentMethod}">
+                                            <span>По банков път</span>
+                                        </label>
+                                        <img class="info" th:src="@{/images/information.gif}"
+                                             title="По банков път.&nbsp;Срокът за плащане е до 2 дни.&nbsp;(Ако не заплатите в този срок, поръчката Ви ще бъде анулирана автоматично.)"/>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input type="radio" name="payment_method" value="card" th:field="*{paymentMethod}">
+                                            <span>Кредитна/дебитна карта</span>
+                                        </label>
+                                        <img class="info" th:src="@{/images/information.gif}"
+                                             title="Кредитна/дебитна карта .&nbsp;Срокът за плащане е до 2 дни.&nbsp;(Ако не заплатите в този срок, поръчката Ви ще бъде анулирана автоматично.)"/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <input id="btnOrderIndexSubmit" type="image" alt="Продължи" title="Продължи"
+                                   th:src="@{/images/btn_order_01.gif}"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/parts/content-left::content-left"></div>
+    </div>
+</div>

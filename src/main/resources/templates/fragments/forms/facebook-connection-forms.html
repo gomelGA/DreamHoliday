@@ -1,0 +1,17 @@
+//facebook connection form - 1st variant
+<form method="post" action="/connect/facebook" th:fragment="fb_connection-form">
+    <input type="hidden" name="scope"
+           value="public_profile, firstName, lastName, gender, email, publish_actions, publish_pages, manage_pages"
+           th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="submit" class="btn btn-primary" title="Вход с Facebook" value="Вход с Facebook"/>
+</form>
+
+//facebook connection form - 2nd variant
+<form method="post" action="/connect/facebook" th:fragment="fb_connection-form2">
+    <input type="hidden" name="scope"
+           value="public_profile, firstName, lastName, gender, email, publish_actions, publish_pages, manage_pages"
+           th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button id="fb-button" type="submit" title="Вход с Facebook">
+        <img id="fb-img" th:src="@{/images/icon_login_facebook.png}" alt="Вход с Facebook"/>
+    </button>
+</form>

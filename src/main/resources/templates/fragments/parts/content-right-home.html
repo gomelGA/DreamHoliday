@@ -1,0 +1,72 @@
+<div id="content-right" th:fragment="content-right-home">
+    <div class="body">
+            <div class="tro_offers" id="offContainer">
+            <div class="offerRow" th:each="offer : ${offers}">
+                <a th:href="|/offers/details/offerId=${offer.id}|">
+                    <h5 th:text="${offer.title}"></h5>
+                </a>
+                <div class="offerRowLeft">
+                    <div class="image">
+                        <img th:src="${offer.pictures[0]}" alt="">
+                    </div>
+                    <div class="short_description">
+                        <span th:text="${offer.shortDescription}"></span>
+                        <a th:href="|/offers/details/offerId=${offer.id}|"
+                           title="Прегледай">Още...</a>
+                    </div>
+                </div>
+                <div class="off_widget">
+                    <div class="priceW ">
+                        <span class="finalPrice" th:text="|${#numbers.formatDecimal(offer.finalPrice, 1, 2)} лв.|"></span>
+                    </div>
+                    <div class="actButton">
+                        <a th:href="|/offers/details/offerId=${offer.id}|" title="Прегледай">
+                            <img th:src="@{/images/btn_preview.png}" alt="Прегледай"/>
+                        </a>
+                    </div>
+                    <div class="priceW2">
+                        <table class="priceInfo">
+                            <div th:if="${offer.discount != 0.00}">
+                                <tr>
+                                    <th>Стойност:</th>
+                                    <td>
+                                        <span class="disabled"
+                                              th:text="|${#numbers.formatDecimal(offer.regularPrice, 1, 2)}&nbsp;лв.|">
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Отстъпка:</th>
+                                    <td><span class="percent" th:text="|${offer.discount}%|"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Спестяваш:&nbsp;</th>
+                                    <td th:with="subtractValue = ${offer.regularPrice - offer.finalPrice}">
+                                        <span th:text="|${#numbers.formatDecimal(subtractValue, 1, 2)}&nbsp;лв.|"></span>
+                                    </td>
+                                </tr>
+                            </div>
+                            <div id="zero-discount" th:unless="${offer.discount != 0.00}">
+                                ТОП ЦЕНА !!!
+                            </div>
+                        </table>
+                    </div>
+                    <!--TODO-->
+                    <div class="timer" id="cntOffer6090"></div>
+                    <!--//TODO-->
+                    <div class="totalDeals">Закупени: <strong th:text="${offer.boughtVouchersCount}"></strong> бр.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--TODO-->
+    <div id="loadingTroNote" style="display: none;">
+        Зареждане на данни, моля
+        изчакайте...
+        <br/>
+        <br/>
+        <img th:src="@{/images/ajax-loader.gif}"/>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div id="content-left" th:fragment="content-left">
+    <div id="tro_banners" class="box">
+        <div class="title">
+            <p>Препоръчани оферти</p>
+        </div>
+        <div class="inside">
+            <div class="troBanner" th:each="recommendedOffer, iter : ${recommendedOffers}">
+                <div th:if="${iter.index < 5}">
+                <a th:href="|/offers/details/offerId=${recommendedOffer.id}|">
+                    <div class="o_title" th:text="${recommendedOffer.title}"></div>
+                    <div class="o_image">
+                        <img th:src="${recommendedOffer.pictures[0]}" alt="" th:title="${recommendedOffer.title}"/>
+                    </div>
+                </a>
+                <p id="separator">&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams&diams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

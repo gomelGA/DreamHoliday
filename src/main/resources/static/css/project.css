@@ -1,0 +1,783 @@
+span.mandatory {
+    color: #ff3b59;
+}
+
+td.data {
+    font-size: small;
+}
+
+table.user-data td.input-data {
+    width: 400px;
+}
+
+h1 {
+    font-size: 25px;
+    color: #003D96;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 20px;
+    color: #003D96;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+td.form-group {
+    width: 200px;
+}
+
+.blank-row {
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.form-control-feedback {
+    padding: 2px;
+}
+
+#content {
+    width: 950px;
+    margin: 10px auto 0;
+    text-align: left;
+}
+
+#content-right {
+    float: right;
+    width: 750px;
+    background-color: #ffffff;
+}
+
+.body {
+    padding: 5px;
+}
+
+.bodyWrap {
+    padding: 30px;
+}
+
+.bodyWrap h1 {
+    font-size: 18px;
+    color: #003D96;
+    padding-bottom: 10px;
+}
+
+.bodyWrap h2 {
+    font-size: 15px;
+    color: #003D96;
+    font-weight: bold;
+}
+
+#login-form-message p {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+table.form-group td {
+    vertical-align: middle;
+    font-size: 14px;
+    width: 60px;
+}
+
+table.form-group td.data input {
+    width: 200px;
+    height: 35px;
+}
+
+.login {
+    float: left;
+}
+
+.registration {
+    float: right;
+}
+
+#or {
+    text-align: center;
+}
+
+#hw {
+    text-align: center;
+}
+
+#hw #header {
+    width: 950px;
+    height: 165px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #003D96;
+}
+
+#mm-up {
+    position: absolute;
+    top: 100px;
+    background-color: #003D96;
+}
+
+#mm-up ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mm-up ul li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+#mm-up ul li span.hotels {
+    margin: 3px 0 0 0;
+    background-color: #24d9e0;
+    padding-top: 4px;
+}
+
+#mm-up ul li span {
+    display: block;
+    padding: 7px 15px 6px 15px;
+}
+
+#mm-up ul li span.hotels a {
+    color: #ffffff;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.92);
+}
+
+#mm-up ul li span a {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#mm-up ul li span.greece {
+    margin: 3px 0 0 0;
+    /*padding-right: 90px;*/
+    background-color: #003D96;
+    padding-top: 4px;
+}
+
+#mm-up ul li span.active a {
+    color: #ffffff;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.92);
+}
+
+/*#mm-up ul li span.baloni {*/
+/*position: absolute;*/
+/*top: -10px;*/
+/*left: 589px;*/
+/*width: 66px;*/
+/*height: 39px;*/
+/*background-image: url('../images/percents.png');*/
+/*background-repeat: no-repeat;*/
+
+/*}*/
+
+span.baloni {
+    position: absolute;
+    top: -10px;
+    left: 335px;
+    width: 66px;
+    height: 39px;
+    background-image: url('../images/percents.png');
+    background-repeat: no-repeat;
+}
+
+#tro-sf {
+    margin: 0 0 0 0;
+    background-color: #003D96;
+    width: 430px;
+    height: 34px;
+    position: absolute;
+}
+
+#tro-sf input#trosfq {
+    position: absolute;
+    width: 265px;
+    top: 4px;
+    left: 65px;
+    /*left: 10px;*/
+    border: 1px solid #cce4f4;
+}
+
+#tro-sf input {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 3px;
+}
+
+#tro-sf input#trosfb {
+    position: absolute;
+    width: 90px;
+    top: 4px;
+    left: 335px;
+    /*right: 15px;*/
+    color: #ffffff;
+    background-color: #003D96;
+    border: 1px solid #81b0e9;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#main-menu {
+    position: absolute;
+    top: 134px;
+    width: 100%;
+    padding: 0;
+    height: 31px;
+    background-color: #003D96;
+}
+
+#main-menu ul.main {
+    list-style: none;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu ul.main li {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0 15px 0 0;
+}
+
+#main-menu ul.main li.mm-all a {
+    color: #ffffff;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.92);
+}
+
+#main-menu ul.contacts {
+    list-style: none;
+    position: absolute;
+    top: 5px;
+    right: 22px;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu ul.contacts li {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+#main-menu ul.contacts li a {
+    color: #ffffff;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.92);
+}
+
+#content-left {
+    float: left;
+    width: 190px;
+}
+
+div#tro_banners {
+    border: 1px solid #003d96;
+}
+
+div.box {
+    margin-bottom: 10px;
+}
+
+div#tro_banners div.title {
+    color: #606060;
+    background-image: url('../images/bgr_banners_title.gif');
+}
+
+div.box div.title {
+    padding: 0 0 7px 0;
+}
+
+div.box div.title p {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 3px 5px 0px 9px;
+    text-align: center;
+}
+
+div#tro_banners div.inside {
+    background-color: #dddddd;
+    padding: 10px;
+}
+
+div#tro_banners div.troBanner {
+    margin: 0 0 10px 0;
+}
+
+div#tro_banners div.troBanner div.o_title {
+    font-weight: bold;
+    color: #636363;
+    font-size: 80%;
+    text-align: justify;
+}
+
+div#tro_banners div.troBanner div.o_image {
+    text-align: center;
+    margin: 1px -3px;
+}
+
+div#tro_banners div.troBanner div.o_image img {
+    border: 3px solid #ffffff;
+    width: 175px;
+    height: 120px;
+}
+
+div#tro_banners div.troBanner div.o_timer {
+    color: #7C7C7C;
+    font-size: 11px;
+}
+
+div#tro_banners div.troBanner div.o_timer div.clock {
+    background-image: url('../images/icon_clock.png');
+    background-repeat: no-repeat;
+    padding: 0 0 0 14px;
+    float: left;
+}
+
+div#tro_banners div.troBanner div.o_timer div.bought {
+    background-image: url('../images/icon_cart.png');
+    background-repeat: no-repeat;
+    padding: 0 0 0 14px;
+    float: right;
+}
+
+.cb {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 25%;
+    width: 100%;
+    background-image: url('../images/travel_53.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+table.form-group td.form-check {
+    width: 100px;
+}
+
+.form-control {
+    width: 60%;
+}
+
+#login-bar {
+    position: absolute;
+    top: 30px;
+    right: 0.1px;
+}
+
+#login-bar ul.lb li {
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    margin: 0 0 0 15px;
+}
+
+#login-bar ul.lb li a {
+    color: #ffffff;
+    display: block;
+    height: 19px;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+
+#login-bar ul.lb-profile li {
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    margin: 0 0 0 8px;
+}
+
+#login-bar ul.lb-profile li a {
+    color: #ffffff;
+    display: block;
+    height: 19px;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+
+#login-bar ul.lb-profile li a img {
+    vertical-align: bottom;
+}
+
+#login-bar ul.hi {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+
+#login-bar ul.hi li {
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+    display: block;
+    height: 19px;
+    float: left;
+    margin: 0 0 0 9px;
+    color: #ffffff;
+}
+
+.registration #regButton {
+    padding-bottom: 12px;
+}
+
+#fb-button {
+    padding: 0 0 0 0;
+}
+
+button #fb-img {
+    background: #636c72;
+}
+
+.tro_offers .offerRow {
+    padding: 15px;
+}
+
+.image img {
+    width: 240px;
+    height: 200px;
+}
+
+.tro_offers .offerRow .offerRowLeft, .tro_offers .offerDetail .offerRowLeft, .tro_offers .offerVendorDetail .offerRowLeft {
+    float: left;
+    /*width: 490px;*/
+}
+
+.tro_offers .offerRow .offerRowLeft .image {
+    float: left;
+    width: 240px;
+    position: relative;
+}
+
+.tro_offers .offerRow .offerRowLeft .short_description {
+    float: right;
+    width: 240px;
+    line-height: 1.3;
+    font-size: 85%;
+    text-align: justify;
+    margin-left: 11px;
+    margin-top: -4px;
+}
+
+/*.tro_offers .off_widget {*/
+    /*float: right;*/
+    /*width: 195px;*/
+    /*margin: 0 10px 0 0;*/
+/*}*/
+
+.tro_offers .offerRow .off_widget .priceW {
+    height: 42px;
+    background-image: url('../images/bgr_price.png');
+    background-repeat: no-repeat;
+}
+
+.tro_offers .offerRow .off_widget .priceW span.finalPrice {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 0 0 0;
+    font-size: 24px;
+    color: #FF3C00;
+}
+
+.tro_offers .offerRow .off_widget .priceW2 {
+    text-align: right;
+    margin: 25px 0 2px 15px;
+}
+
+.tro_offers .offerRow .off_widget .priceW2 .priceInfo {
+    border: 0;
+    padding: 0;
+}
+
+.tro_offers .offerRow .off_widget .priceW2 .priceInfo td {
+    font-weight: bolder;
+}
+
+/*.tro_offers .offerRow .off_widget .totalDeals {*/
+    /*margin: 15px 0px 2px 15px;*/
+/*}*/
+
+.tro_offers .offerRow .off_widget .totalDeals strong {
+    color: #014c8c;
+}
+
+.priceInfo th {
+    font-weight: normal;
+}
+
+.priceInfo td {
+    font-weight: bold;
+}
+
+.tro_offers .offerRow .off_widget .priceW2 .priceInfo .disabled {
+    text-decoration: line-through;
+    color: #FF3C00;
+}
+
+.offerDetail {
+    padding: 0 15px 15px 15px;
+}
+
+.offerRowLeft {
+    text-align: justify;
+}
+
+.offerRowLeft h2 {
+    color: #FF4202;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.offerRowLeft p {
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+}
+
+.offerRowLeft ul {
+    margin-left: -35px;
+}
+
+.offerRowLeft ul li {
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    list-style: none;
+    background-image: url('../images/arrow.gif');
+    background-repeat: no-repeat;
+    background-position: 0 3px;
+    padding-left: 10px;
+}
+
+.offerRowLeft strong {
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    list-style: none;
+    background-image: url('../images/arrow.gif');
+    background-repeat: no-repeat;
+    background-position: 3px;
+    padding-left: 13px;
+}
+
+.offerRowLeft b p {
+    background-image: url('../images/arrow.gif');
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    padding: 0px 0px 0px 7px;
+    background-position: 0 4px;
+}
+
+.offerRowLeft ul li.offer-validity-conditions {
+    color: rgb(0, 128, 0);
+    font-weight: bold;
+    padding-left: 15px;
+    background-image: none;
+    line-height: 1.5;
+}
+
+.offerRowLeft ul li strong.insurance {
+    background-image: none;
+    padding: 0 0 0 0;
+
+}
+
+.offerRowLeft ul li strong u {
+    color: #003D96;
+}
+
+#hw #add-offer-header {
+    height: 85px;
+    width: 950px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+
+.add-offer-thead-tr {
+    background-color: #2abad2;
+}
+
+.add-offer-tbody-tr {
+    background-color: #ffffff;
+}
+
+table {
+    border-collapse: separate;
+}
+
+.bodyWrap h1.add-offer-title {
+    font-size: 25px;
+    color: #003D96;
+}
+
+#zero-discount {
+    text-align: center;
+    color: #003D96;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0 15px 0;
+}
+
+.inside .troBanner p#separator {
+    font-size: xx-small;
+    margin-bottom: -12px;
+}
+
+table.order tr {
+    font-size: small;
+}
+
+table.order td.label label {
+    margin-bottom: .1rem;
+}
+
+table.order {
+    width: 670px;
+    margin-bottom: 30px;
+}
+
+#frmOrderIndex p em {
+    color: #ff4202;
+    font-size: 14px;
+}
+
+table.order textarea.long {
+    width: 400px;
+    height: 120px;
+}
+
+#frmOrderIndex table.order td.label {
+    width: 200px;
+}
+
+table#paymentInfo.order tr td#panelOrderPaymentMethod {
+    padding-top: 25px;
+}
+
+table.profile {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    width: 670px;
+    margin-bottom: 30px;
+}
+
+table.profile tr td.label {
+    font-size: small;
+    width: 135px;
+}
+
+table.profile td {
+    border: 1px solid #000000;
+    padding-left: 5px;
+}
+
+.btn-general {
+    background-color: #003d96;
+    color: #ffffff;
+}
+
+.btn-user {
+    font-family: Tahoma, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    -moz-border-radius: 3px !important;
+    -webkit-border-radius: 3px !important;
+    -khtml-border-radius: 3px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    height: 25px !important;
+    cursor: pointer !important;
+    padding: 0 6px 2px 6px !important;
+}
+
+table.order input.long {
+    width: 400px;
+}
+
+table.order select.long {
+    width: 400px;
+}
+
+table.order td.label {
+    width: 135px;
+}
+
+table.order td {
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.order tr td.data label {
+    margin-bottom: 0rem;
+}
+
+#user-profile-change {
+    margin-bottom: -40px;
+}
+
+#tableData {
+    padding: 10px 18px;
+    border-bottom: 1px solid #111;
+}
+
+/*#interceptor {*/
+    /*color: #ffffff;*/
+/*}*/
+
+#ordersInfo {
+    font-size: 12px;
+}
+
+#ohTros thead {
+    font-size: small;
+}
+
+#orderData {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.hotel-data td {
+    border: 1px solid #000000;
+    padding: 4px;
+}
+
+#order-preview {
+    border-collapse: collapse;
+}
+
+#order-preview .label {
+    width: 140px;
+}

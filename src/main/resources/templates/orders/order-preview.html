@@ -1,0 +1,76 @@
+<header th:replace="fragments/header::mm"></header>
+<div id="cw">
+    <div id="content">
+        <div id="content-right">
+            <div class="body">
+                <div class="bodyWrap">
+                    <p>
+                        <a type="button" id="btnProfileEdit" class="btn-user btn-general"  th:href="|/user/${#authentication.getPrincipal().getId()}/orders|">Обратно към всички поръчки
+                        </a>
+                    </p>
+                    <h1 style="margin: 0 0 20px 0;">Преглед на поръчка по оферта</h1>
+                    <h2>Данни за поръчката</h2>
+                    <table id="order-preview" class="order hotel-data" th:object="${orderViewModel}">
+                        <tr>
+                            <td class="label">№</td>
+                            <td class="data" th:text="${orderViewModel.id}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Създадена на</td>
+                            <td class="data" th:text="${orderViewModel.creationDate}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Оферта</td>
+                            <td class="data">
+                                <a target="_blank" th:href="|/offers/details/offerId=${orderViewModel.offerId}|" th:text="${orderViewModel.offerTitle}"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Стандартна цена</td>
+                            <td class="data" th:text="|${#numbers.formatDecimal(orderViewModel.offerRegularPrice, 1, 2)} лв.|"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Промоционална цена</td>
+                            <td class="data" th:text="|${#numbers.formatDecimal(orderViewModel.singleVoucherPrice, 1, 2)} лв.|"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Брой ваучери</td>
+                            <td class="data" th:text="${orderViewModel.voucherCount}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Крайна цена</td>
+                            <td class="data" ><strong th:text="|${#numbers.formatDecimal(orderViewModel.totalPrice, 1, 2)} лв.|"></strong></td>
+                        </tr>
+                    </table>
+                    <h2>Данни за клиента</h2>
+                    <table id="order-preview" class="order hotel-data">
+                        <tr>
+                            <td class="label">Име и фамилия</td>
+                            <td class="data" th:text="${#strings.concat(#authentication.getPrincipal().getFirstName(), '&nbsp;', #authentication.getPrincipal().getLastName())}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">E-mail</td>
+                            <td class="data" th:text="${#authentication.getPrincipal().username}"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Телефон</td>
+                            <td class="data" th:text="${#authentication.getPrincipal().phone}"></td>
+                        </tr>
+                    </table>
+                    <h2>Забележки към поръчката</h2>
+                    <table id="order-preview" class="order hotel-data">
+                        <tr>
+                            <td class="label">Забележки</td>
+                            <td class="data" th:text="${orderViewModel.notes}"></td>
+                        </tr>
+                    </table>
+                    <p>
+                        <a type="button" id="btnProfileEdit" class="btn-user btn-general" th:href="|/user/${#authentication.getPrincipal().getId()}/orders|">Обратно към всички поръчки
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/parts/content-left::content-left"></div>
+    </div>
+</div>

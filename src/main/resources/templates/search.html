@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="fragments/head"></head>
+    <body>
+        <div class="container">
+            <header th:replace="fragments/header::mm"></header>
+            <div id="cw">
+                <div id="content">
+                    <div id="content-right" th:fragment="content-right-home">
+                        <div class="body">
+                            <div id="offContainer" class="tro_offers">
+
+                            </div>
+                        </div>
+                        <!--TODO-->
+                        <div id="loadingTroNote" style="display: none;">
+                            Зареждане на данни, моля
+                            изчакайте...
+                            <br/>
+                            <br/>
+                            <img th:src="@{/images/ajax-loader.gif}"/>
+                        </div>
+                    </div>
+                    <div th:replace="fragments/parts/content-left::content-left"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script th:replace="fragments/footer"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            loadJSONOffers();
+//            $('#trosfq').on('input', search);
+        });
+
+        function loadJSONOffers() {
+            $.ajax({
+                type: 'GET',
+                url: '/offers/all',
+//                    data: {
+//                        searchWord: searchWord
+//                    },
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (offers) {
+//                        $('#tro_offers').empty();
+                    loadDOMOffers(offers);
+                }
+            });
+        }
+
+        //        function search() {
+        //            var searchWord = $('#trosfq').val();
+        //            $.ajax({
+        //                    type: 'GET',
+        //                    url: '/',
+        //                    data: {
+        //                        searchWord: searchWord
+        //                    },
+        //                    dataType: 'json',
+        //                    contentType: 'application/json',
+        //                    success: function (offers) {
+        //                        $('#tro_offers').empty();
+        //                        $.each(offers, function (i, offer) {
+        //                                addOfferDOMS(offer);
+        //                            }
+        //                        )
+        //                    }
+        //                }
+        //            )
+        //        }
+
+        function loadDOMOffers(offers) {
+            $.each(offers, function (i, offer) {
+                $('#offContainer')
+                    .append($('<div></div>')
+                        .addClass('offerRow')
+                        .append($('<h5><h5/>')
+                            .append($('<a><a/>')
+                                .attr('href', function () {
+                                    return '/offers/details/offerId=' + offer.id;
+                                })
+//                                .text(offer.title)
+                            )
+                        )
+                    )
+                    .append(
+                        $('<div></div>')
+                            .addClass('offerRowLeft')
+                            .append($('<div></div>')
+                                    .addClass('image')
+                                    .append($('<img/>')
+                                            .attr('src', offer.pictures[0])
+                                            .attr('alt', '')
+                                    )
+                            )
+                            .append($('<div></div>')
+                                    .addClass('short_description')
+                                    .append($('<span></span>')
+                                        .text(offer.shortDescription)
+                                    )
+                                    .append($('<a><a/>')
+                                            .attr('href', function () {
+                                                return '/offers/details/offerId=' + offer.id;
+                                            })
+                                            .attr('title', 'Прегледай')
+//                                            .text(' Още...')
+                                    )
+                            )
+
+                    )
+                    .append($('<div></div>')
+                            .addClass('off_widget')
+                            .append($('<div></div>')
+                                    .addClass('priceW')
+                                    .append($('<span></span>')
+                                            .addClass('finalPrice')
+//                                        .text(offer)
+//                                            ('text', '|${#numbers.formatDecimal(offer.finalPrice, 1, 2)} лв.|')
+                                    )
+                            )
+                            .append(
+                                $('<div></div>')
+                                    .addClass('actButton')
+                                    .append(
+                                        $('<a><a/>')
+                                            .attr('th:href', '|/offers/details/offerId=${offer.id}|')
+                                            .attr('title', 'Прегледай')
+                                            .append(
+                                                $('<img/>')
+                                                    .attr('th:src', '@{/images/btn_preview.png}')
+                                                    .attr('alt', 'Прегледай')
+                                            )
+                                    )
+                            )
+                            .append(
+                                $('<div></div>')
+                                    .addClass('priceW2')
+                                    .append(
+                                        $('<table></table>')
+                                            .addClass('priceInfo')
+                                            .append(
+                                                $('<div></div>')
+                                                    .attr('th:if', '${offer.discount != 0.00}')
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Стойност:')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .addClass('disabled')
+                                                                            .attr('th:text', '|${#numbers.formatDecimal(offer.regularPrice, 1, 2)}&nbsp;лв.|')
+                                                                    )
+                                                            )
+                                                    )
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Отстъпка:')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .addClass('percent')
+                                                                            .attr('th:text', '|${offer.discount}%')
+                                                                    )
+                                                            )
+                                                    )
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Спестяваш:&nbsp;')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .attr('th:text', 'subtractValue = ${offer.regularPrice - offer.finalPrice}')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .attr('th:text', '|${#numbers.formatDecimal(subtractValue, 1, 2)}&nbsp;лв.|')
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                            .append(
+                                                $('<div></div>')
+                                                    .attr('id', 'zero-discount')
+                                                    .attr('th:unless', '${offer.discount != 0.00}')
+                                                    .val('ТОП ЦЕНА !!!')
+                                            )
+                                    )
+                            )
+                    )
+            });
+        }
+
+        function addOfferDOM(offer) {
+            $('#tro_offers').append(
+                $('<div></div>')
+                    .addClass('offerRow')
+                    .append(
+                        $('<a><a/>')
+                            .attr('href', '/offers/details/offerId=offer.id')
+                            .append(
+                                $('<h5><h5/>')
+                                    .attr('th:text', "${offer.title}")
+                            )
+                    )
+                    .append(
+                        $('<div></div>')
+                            .addClass('offerRowLeft')
+                            .append(
+                                $('<div></div>')
+                                    .addClass('image')
+                                    .append(
+                                        $('<img/>')
+                                            .attr('th:src', '${offer.pictures[0]}')
+                                            .attr('alt', '')
+                                    )
+                            )
+                            .append(
+                                $('<div></div>')
+                                    .addClass('short_description')
+                                    .append(
+                                        $('<span></span>')
+                                            .attr('th:text', '${offer.shortDescription}')
+                                    )
+                                    .append(
+                                        $('<a><a/>')
+                                            .attr('th:href', '|/offers/details/offerId=${offer.id}|')
+                                            .attr('title', 'Прегледай')
+                                            .val('Още...')
+                                    )
+                            )
+                    )
+                    .append(
+                        $('<div></div>')
+                            .addClass('off_widget')
+                            .append(
+                                $('<div></div>')
+                                    .addClass('priceW')
+                                    .append(
+                                        $('<span></span>')
+                                            .addClass('finalPrice')
+                                            .attr('th:text', '|${#numbers.formatDecimal(offer.finalPrice, 1, 2)} лв.|')
+                                    )
+                            )
+                            .append(
+                                $('<div></div>')
+                                    .addClass('actButton')
+                                    .append(
+                                        $('<a><a/>')
+                                            .attr('th:href', '|/offers/details/offerId=${offer.id}|')
+                                            .attr('title', 'Прегледай')
+                                            .append(
+                                                $('<img/>')
+                                                    .attr('th:src', '@{/images/btn_preview.png}')
+                                                    .attr('alt', 'Прегледай')
+                                            )
+                                    )
+                            )
+                            .append(
+                                $('<div></div>')
+                                    .addClass('priceW2')
+                                    .append(
+                                        $('<table></table>')
+                                            .addClass('priceInfo')
+                                            .append(
+                                                $('<div></div>')
+                                                    .attr('th:if', '${offer.discount != 0.00}')
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Стойност:')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .addClass('disabled')
+                                                                            .attr('th:text', '|${#numbers.formatDecimal(offer.regularPrice, 1, 2)}&nbsp;лв.|')
+                                                                    )
+                                                            )
+                                                    )
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Отстъпка:')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .addClass('percent')
+                                                                            .attr('th:text', '|${offer.discount}%')
+                                                                    )
+                                                            )
+                                                    )
+                                                    .append(
+                                                        $('<tr></tr>')
+                                                            .append(
+                                                                $('<th></th>')
+                                                                    .val('Спестяваш:&nbsp;')
+                                                            )
+                                                            .append(
+                                                                $('<td></td>')
+                                                                    .attr('th:text', 'subtractValue = ${offer.regularPrice - offer.finalPrice}')
+                                                                    .append(
+                                                                        $('<span></span>')
+                                                                            .attr('th:text', '|${#numbers.formatDecimal(subtractValue, 1, 2)}&nbsp;лв.|')
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                            .append(
+                                                $('<div></div>')
+                                                    .attr('id', 'zero-discount')
+                                                    .attr('th:unless', '${offer.discount != 0.00}')
+                                                    .val('ТОП ЦЕНА !!!')
+                                            )
+                                    )
+                            )
+                    )
+            )
+        }
+    </script>
+</html>

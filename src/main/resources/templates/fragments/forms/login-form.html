@@ -1,0 +1,42 @@
+<form method="post" th:fragment="login-form">
+    <table class="form-group">
+        <tbody>
+            <tr>
+                <td class="label">
+                    <label class="form-control-label"
+                           for="inputEmail">Е-мейл</label>
+                </td>
+                <td class="data">
+                    <input type="text" class="form-control form-control-danger" id="inputEmail" name="email"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label class="form-control-label"
+                           for="inputPassword">Парола</label>
+                </td>
+                <td class="data">
+                    <input type="password" class="form-control form-control-danger" id="inputPassword"
+                           name="password"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input"
+                               name="rememberMe"/>
+                        Запомни ме
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <input type="submit" class="btn btn-primary" value="Вход"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

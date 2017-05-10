@@ -1,0 +1,34 @@
+<main th:fragment="content-right-login">
+    <div id="cw">
+        <div id="content">
+            <div id="content-right">
+                <div class="body">
+                    <div class="bodyWrap">
+                        <h1>Влез в DreamHoliday.bg</h1>
+                        <div style="color: red" th:if="${error} != null" th:text="${error}"></div>
+                        <div id="login-form-message">
+                            <p>За да използвате максималната функционалност на сайта, е необходимо да имате
+                                <a th:href="@{/register}">регистрация</a>, или да използвате вашия Facebook
+                                акаунт.</p>
+                        </div>
+                        <div class="login">
+                            <h2>Имам регистрация</h2>
+                            <form th:replace="fragments/forms/login-form::login-form"></form>
+                        </div>
+                        <div class="registration">
+                            <h2>Нов потребител</h2>
+                            <p>
+                                <a id="regButton" class="btn btn-success" th:href="@{/register}">Регистрация</a>
+                            </p>
+                            <p id="or">
+                                или
+                            </p>
+                            <form th:replace="fragments/forms/facebook-connection-forms::fb_connection-form"></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/parts/content-left::content-left"></div>
+        </div>
+    </div>
+</main>

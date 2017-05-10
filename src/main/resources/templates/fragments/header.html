@@ -1,0 +1,65 @@
+<div id="hw" th:fragment="mm">
+    <div id="header">
+        <div id="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo"/>
+            </a>
+            <span class="baloni"></span>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <div th:replace="fragments/parts/login-bars::lb-profile"></div>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <div th:replace="fragments/parts/login-bars::lb"></div>
+        </div>
+        <!--<div id="interceptor" th:text="|Page Clicked: ${counter}|"></div>-->
+        <div id="mm-up">
+            <ul>
+                <li>
+                    <span class="active bulgaria">
+                        <a th:href="@{/offers/bulgaria}" title="Почивки в България с отстъпка">Оферти България</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="active greece">
+                        <a th:href="@{/offers/greece}" title="Почивки в Гърция с отстъпка">Оферти Гърция
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="active turkey">
+                        <a th:href="@{/offers/turkey}" title="Почивки в Турция с отстъпка">Оферти Турция
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <div id="tro-sf">
+                        <form method="get">
+                            <input type="text" id="trosfq"/>
+                        </form>
+                        <input type="button" value="Търси" id="trosfb"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="main-menu">
+            <ul class="main">
+                <li class="mm-all">
+                    <a th:href="@{/}" title="Всички оферти">
+                        Всички оферти
+                    </a>
+                </li>
+                <li class="mm-all">
+                    <a th:href="@{/offers/profitableOffers}" title="Изгодни предложения">Изгодни оферти</a>
+                </li>
+                <!--<li class="mm-all">-->
+                    <!--<a href="http://niamavreme.bg/oferti_za_kolektivno_pazaruvane/iztekli_oferti.html" title="Изтекли оферти">Изтекли оферти-->
+                    <!--</a>-->
+                <!--</li>-->
+                <li class="mm-all" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/offers/all/administrator}">Администратор</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

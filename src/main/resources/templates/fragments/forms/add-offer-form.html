@@ -1,0 +1,263 @@
+<form method="post" th:fragment="add-offer-form" class="add-offer-form" th:object="${addOfferBindingModel}">
+    <table class="offer-data">
+        <tbody>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('destination')} ? 'has-danger'">
+                    <label class="form-control-label" for="destination">Дестинация </label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('destination')} ? 'has-danger'">
+                    <select class="form-control form-control-danger" id="destination" name="destination" th:field="*{destination}">
+                        <option value="">- моля изберете -</option>
+                        <option value="България">България</option>
+                        <option value="Гърция">Гърция</option>
+                        <option value="Турция">Турция</option>
+                    </select>
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('destination')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('destination')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('location')} ? 'has-danger'">
+                    <label class="form-control-label" for="location">Локация</label>
+                </td>
+                <td class="input-data">
+                    <input type="text"
+                           class="form-control" id="location"
+                           name="location" th:field="*{location}"/>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="form-control-label" for="title">Заглавие</label>
+                    <span class="mandatory">*</span>
+                </td>
+                <td>
+                    <input type="text"class="form-control form-control-danger"
+                           id="title" name="password" th:field="*{title}"/>
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('title')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('title')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('shortDescription')} ? 'has-danger'">
+                    <label class="form-control-label" for="shortDescription">Кратко описание</label>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('shortDescription')} ? 'has-danger'">
+                    <input type="text" class="form-control" id="shortDescription"
+                           name="shortDescription" th:field="*{shortDescription}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('description')} ? 'has-danger'">
+                    <label class="form-control-label" for="description">Описание</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('description')} ? 'has-danger'">
+                        <textarea type="" class="form-control form-control-danger" id="description"
+                                  name="description" th:field="*{description}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('description')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('description')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('offerConditions')} ? 'has-danger'">
+                    <label class="form-control-label" for="offerConditions">Условия по офертата</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('offerConditions')} ? 'has-danger'">
+                    <!--<label class="form-check-label">-->
+                    <input type="text" class="form-control form-control-danger" id="offerConditions"
+                           name="offerConditions" th:field="*{offerConditions}" />
+                    <!--</label>-->
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('offerConditions')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('offerConditions')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('regularPrice')} ? 'has-danger'">
+                    <label class="form-control-label" for="regularPrice">Цена</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('regularPrice')} ? 'has-danger'">
+                    <input type="number" step="0.01" min="0" class="form-control"
+                           id="regularPrice"
+                           name="regularPrice" th:field="*{regularPrice}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('regularPrice')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('regularPrice')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('discount')} ? 'has-danger'">
+                    <label class="form-control-label" for="discount">Отстъпка (&#37)</label>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('discount')} ? 'has-danger'">
+                    <input type="number" step="0.01" min="0" max="100" class="form-control"
+                           id="discount"
+                           name="discount" th:field="*{discount}"/>
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('discount')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('discount')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('priceIncludingInfo')} ? 'has-danger'">
+                    <label class="form-control-label" for="priceIncludingInfo">Цената включва</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('priceIncludingInfo')} ? 'has-danger'">
+                    <input type="text" class="form-control form-control-danger"
+                           id="priceIncludingInfo"
+                           name="priceIncludingInfo" th:field="*{priceIncludingInfo}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('priceIncludingInfo')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('priceIncludingInfo')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('startDate')} ? 'has-danger'">
+                    <label class="form-control-label" for="startDate">Начална дата</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('startDate')} ? 'has-danger'">
+                    <input type="date" class="form-control form-control-danger" placeholder="dd.MM.yyyy"
+                           id="startDate"
+                           name="startDate" th:field="*{startDate}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('startDate')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('startDate')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('endDate')} ? 'has-danger'">
+                    <label class="form-control-label" for="endDate">Крайна дата</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('endDate')} ? 'has-danger'">
+                    <input type="date" class="form-control form-control-danger" placeholder="dd.MM.yyyy"
+                           id="endDate"
+                           name="endDate" th:field="*{endDate}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('endDate')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('endDate')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td class="form-group"-->
+                    <!--th:classappend="${#fields.hasErrors('totalVoucherCount')} ? 'has-danger'">-->
+                    <!--<label class="form-control-label" for="totalVoucherCount">Брой ваучери</label><span-->
+                        <!--class="mandatory">*</span>-->
+                <!--</td>-->
+                <!--<td class="input-data"-->
+                    <!--th:classappend="${#fields.hasErrors('totalVoucherCount')} ? 'has-danger'">-->
+                    <!--<input type="number" min="0" class="form-control"-->
+                           <!--id="totalVoucherCount"-->
+                           <!--name="totalVoucherCount" th:field="*{totalVoucherCount}" />-->
+                    <!--<small class="form-group"-->
+                           <!--th:classappend="${#fields.hasErrors('totalVoucherCount')} ? 'has-danger'">-->
+                        <!--<div class="form-control-feedback"-->
+                             <!--th:each="error : ${#fields.errors('totalVoucherCount')}"-->
+                             <!--th:text="${error}">-->
+                        <!--</div>-->
+                    <!--</small>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr>
+                <td class="form-group"
+                    th:classappend="${#fields.hasErrors('pictures')} ? 'has-danger'">
+                    <label class="form-control-label" for="pictures">Снимка(URLs)</label><span
+                        class="mandatory">*</span>
+                </td>
+                <td class="input-data"
+                    th:classappend="${#fields.hasErrors('pictures')} ? 'has-danger'">
+                    <input type="text" class="form-control form-control-danger"
+                           id="pictures"
+                           name="pictures" th:field="*{pictures}" />
+                    <small class="form-group"
+                           th:classappend="${#fields.hasErrors('pictures')} ? 'has-danger'">
+                        <div class="form-control-feedback"
+                             th:each="error : ${#fields.errors('pictures')}"
+                             th:text="${error}">
+                        </div>
+                    </small>
+                </td>
+            </tr>
+            <tr class="blank-row"></tr>
+            <tr>
+                <td class="form-group"></td>
+                <td class="data">Всички полета, отбелязани с <span class="mandatory">*</span>, са
+                    задължителни за попълване.
+                </td>
+            </tr>
+            <tr class="blank-row"></tr>
+            <tr>
+                <td class="form-group"></td>
+                <td>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit" class="btn btn-success">Добави</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
